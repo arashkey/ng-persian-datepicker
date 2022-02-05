@@ -1,39 +1,29 @@
-import { ConfigModel } from '../../../projects/ng-persian-datepicker/src/lib/model/config.model';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { IActiveDate } from '../../../projects/ng-persian-datepicker/src/public-api';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss']
 })
-export class DemoComponent implements OnInit {
+export class DemoComponent {
 
-  constructor(
-  ) {}
+  dateValue = new Date().valueOf();
 
-  config: ConfigModel = {
-    date: {
-      value: new Date().valueOf(),
-      onSelect: (shamsiDate: string, gregorianDate: string, timestamp: number) => {
-        console.log(shamsiDate, gregorianDate, timestamp);
-      }
-    },
-    ui: {
-      theme: 'default',
-      isVisible: true,
-      hideAfterSelectDate: false,
-      hideOnOutsideClick: false,
-      yearView: true,
-      monthView: true
-    },
-    time: {
-      enable: true,
-      showSecond: true,
-      meridian: false
-    }
-  };
+  uiIsVisible: boolean = true;
+  uiTheme: string = 'default';
+  uiYearView: boolean = true;
+  uiMonthView: boolean = true;
+  uiHideAfterSelectDate: boolean = false;
+  uiHideOnOutsideClick: boolean = false;
+  uiTodayBtnEnable: boolean = true;
 
-  ngOnInit() {
+  timeEnable: boolean = true;
+  timeShowSecond: boolean = true;
+  timeMeridian: boolean = false;
+
+  onSelect(date: IActiveDate) {
+    console.log(date);
   }
 
 }

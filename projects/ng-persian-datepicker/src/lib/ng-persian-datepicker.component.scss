@@ -1,5 +1,5 @@
 @use "sass:math";
-@import "theme";
+@import "scss";
 
 .datepicker-outer-container {
   direction: rtl;
@@ -7,9 +7,11 @@
   vertical-align: top;
   min-width: 200px;
   font-size: 12px;
-  padding: 8px 3px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   user-select: none;
   text-align: center;
+  border-radius: 5px;
 
   &.hide {
     display: none;
@@ -20,6 +22,19 @@
   }
 
   .datepicker-inner-container {
+
+    .horizontal-padding {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    .no-margin-bottom {
+      margin-bottom: 0 !important;
+    }
+
+    .dp-btn {
+      border-radius: 5px;
+    }
 
     .content-container {
       margin-bottom: 8px;
@@ -60,7 +75,15 @@
         display: inline-block;
         vertical-align: top;
         width: math.div(100%, 7);
-        padding: 3px 0;
+        padding: 1px;
+
+        .dp-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 24px;
+        }
       }
 
       .week-days {
@@ -80,55 +103,60 @@
       display: inline-block;
       vertical-align: top;
       width: math.div(100%, 3);
-      padding: 9px 0;
-      margin: 1px 0;
+      padding: 1px;
       cursor: pointer;
+
+      .dp-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        min-height: 36px;
+      }
     }
 
     .time-container {
-      padding: 5px;
       border-top-width: 1px;
       border-top-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      height: 82px;
       direction: ltr;
 
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-content: center;
+
       .time-col {
-        display: inline-block;
-        vertical-align: top;
-        width: math.div(100%, 2);
-        position: relative;
-        cursor: pointer;
-        div {
-          svg {
-            width: 12px;
-            height: 12px;
-          }
-          transition: all 100ms ease;
-        }
-        &.the-divider {
-          &:after {
-            content: ":";
-            position: absolute;
-            top: 33%;
-            right: 0;
-          }
-        }
-      }
+        flex: 1;
+        height: 100%;
+        overflow: auto;
 
-      &.include-second {
-        .time-col {
-          width: math.div(100%, 3);
-        }
+        .item {
+          padding: 1px;
 
-        &.include-12-hour {
-          .time-col {
-            width: math.div(100%, 4);
+          &:first-of-type {
+            padding-top: 3px;
+          }
+
+          &:last-of-type {
+            padding-bottom: 3px;
+          }
+
+          .dp-btn {
+            min-height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
           }
         }
-      }
 
-      &.include-12-hour {
-        .time-col {
-          width: math.div(100%, 3);
+        &.meridian-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
       }
     }
@@ -138,7 +166,7 @@
       .the-item {
         display: inline-block;
         vertical-align: top;
-        min-width: 50px;
+        min-width: 40px;
         cursor: pointer;
         font-weight: bold;
         padding: 3px 5px;

@@ -2,7 +2,6 @@
   $themeName,
   $backgroundColor,
   $textColor,
-  $boxShadowColor,
   $borderColor,
   $theColHoverBackgroundColor,
   $theColHoverTextColor,
@@ -13,19 +12,14 @@
   $disabledColBackgroundColor,
   $disabledColTextColor,
   $otherMonthColTextColor,
-  $timePickerBackgroundColor,
-  $timePickerBorderTopColor,
-  $timePickerIconColor,
-  $timePickerHoverIconColor
+  $timePickerBorderColor
 )
 {
   .datepicker-outer-container {
     &.#{$themeName} {
       background: $backgroundColor;
       color: $textColor;
-      @if $boxShadowColor {
-        box-shadow: 0 5px 10px $boxShadowColor;
-      }
+
       @if $borderColor {
         border: 1px solid $borderColor;
       }
@@ -44,12 +38,12 @@
 
         .dp-btn {
 
-          &:hover {
-            background: $theColHoverBackgroundColor!important;
-            color: $theColHoverTextColor!important;
+          &:not(.disabled):not(.selected):hover {
+            background: $theColHoverBackgroundColor;
+            color: $theColHoverTextColor;
             svg {
               path {
-                fill: $theColHoverTextColor!important;
+                fill: $theColHoverTextColor;
               }
             }
           }
@@ -65,9 +59,9 @@
           }
 
           &.disabled {
-            background: $disabledColBackgroundColor!important;
-            color: $disabledColTextColor!important;
-            cursor: not-allowed!important;
+            background: $disabledColBackgroundColor;
+            color: $disabledColTextColor;
+            cursor: not-allowed;
           }
 
           &.other-month {
@@ -76,25 +70,8 @@
         }
 
         .time-container {
-          background: $timePickerBackgroundColor;
-          border-top-color: $timePickerBorderTopColor;
-
-          .time-col {
-            div {
-              svg {
-                polygon {
-                  fill: $timePickerIconColor;
-                }
-              }
-              &:hover {
-                svg {
-                  polygon {
-                    fill: $timePickerHoverIconColor;
-                  }
-                }
-              }
-            }
-          }
+          border-top-color: $timePickerBorderColor;
+          border-bottom-color: $timePickerBorderColor;
         }
       }
     }

@@ -1,4 +1,4 @@
-export interface DateConfigModel {
+export interface IDate {
 
   /**
    * @description value of date
@@ -36,9 +36,4 @@ export interface DateConfigModel {
    * @description max date that user can select (timestamp)
    */
   max?: number;
-
-  /**
-   * @description onSelect date callback
-   */
-  onSelect?: (shamsiDate: string, gregorianDate: string, timestamp: number) => void;
 }
